@@ -1,0 +1,23 @@
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+server:
+  port: 8765
+spring:
+  application:
+    name: server-feign
+  datasource:
+    url: jdbc:oracle:thin:@127.0.0.1:1521:orcl
+    username: scott
+    password: 123456
+    driver-class-name: oracle.jdbc.driver.OracleDriver
+feign:
+  hystrix:
+    enabled: true
+mybatis:
+  mapper-locations: classpath:mapper/*Mapper.xml
+  type-aliases-package: com.txk.springcloudstart.serverfeign.vo
+logging:
+  level:
+   root: debug
