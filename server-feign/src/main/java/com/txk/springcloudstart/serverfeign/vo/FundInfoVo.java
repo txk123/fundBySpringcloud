@@ -30,6 +30,33 @@ public class FundInfoVo {
   private String lastUpdateUser;
   private Date lastUpdateTm;
 
+  private long totalRecords;
+  private int pageSize;
+  private int pageNum;
+
+  public long getTotalRecords() {
+    return totalRecords;
+  }
+
+  public void setTotalRecords(long totalRecords) {
+    this.totalRecords = totalRecords;
+  }
+
+  public int getPageSize() {
+    return pageSize;
+  }
+
+  public void setPageSize(int pageSize) {
+    this.pageSize = pageSize;
+  }
+
+  public int getPageNum() {
+    return pageNum;
+  }
+
+  public void setPageNum(int pageNum) {
+    this.pageNum = pageNum;
+  }
 
   public String getId() {
     return id;
