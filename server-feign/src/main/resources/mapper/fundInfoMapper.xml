@@ -28,10 +28,38 @@
         <result property="lastUpdateUser" column="last_update_user"/>
         <result property="lastUpdateTm" column="last_update_tm"/>
     </resultMap>
+    <delete id="removeFunds" >
+        DELETE FROM PARM_FUND_INFO t WHERE t.id IN
+        <foreach collection="list" item="item" open="("
+                 separator="," close=")">
+            #{item.id}
+        </foreach>
+    </delete>
 
 
-    <select id="queryFundInfo" resultMap="fundInfoRes" parameterType="com.txk.springcloudstart.serverfeign.vo.FundInfoVo">
+    <select id="queryFundInfo" resultMap="fundInfoRes"
+            parameterType="com.txk.springcloudstart.serverfeign.vo.FundInfoVo">
         select *
-        from PARM_FUND_INFO
+        from PARM_FUND_INFO t
+        <where>
+            <if test="fundCode !=null and fundCode != '' ">
+                t.FUND_CODE=#{fundCode}
+            </if>
+            <if test="fundFullName !=null and fundFullName != ''">
+                and t.FUND_FULL_NAME=#{fundFullName}
+            </if>
+            <if test="fundCategory !=null and fundCategory != ''">
+                and t.fund_category=#{fundCategory}
+            </if>
+            <if test="taCode !=null and taCode != ''">
+                and t.ta_code=#{taCode}
+            </if>
+            <if test="custodianCode !=null and custodianCode != ''">
+                and t.custodian_code=#{custodianCode}
+            </if>
+            <if test="needReview !=null and needReview != ''">
+                and t.need_review=#{needReview}
+            </if>
+        </where>
     </select>
 </mapper>

@@ -5,6 +5,7 @@ import com.github.pagehelper.PageInfo;
 import com.txk.springcloudstart.serverfeign.dao.IFundInfoDao;
 import com.txk.springcloudstart.serverfeign.service.FundService;
 import com.txk.springcloudstart.serverfeign.vo.FundInfoVo;
+import com.txk.springcloudstart.serverfeign.vo.ResultVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,9 +25,21 @@ public class FundServiceImpl implements FundService {
         PageHelper.startPage(FundInfoVo.getPageNum(),FundInfoVo.getPageSize());
         List<FundInfoVo> fundInfoVos = iFundInfoDao.queryFundInfo(FundInfoVo);
         PageInfo<FundInfoVo> userInfoDtoPageInfo = new PageInfo<FundInfoVo>(fundInfoVos);
+        if ((null==fundInfoVos || fundInfoVos.isEmpty())) {
+            return fundInfoVos;
+        }
         fundInfoVos.get(0).setTotalRecords( userInfoDtoPageInfo.getTotal());
         fundInfoVos.get(0).setPageSize(userInfoDtoPageInfo.getPageSize());
-        System.out.println("fundInfoVos = " + fundInfoVos);
         return fundInfoVos;
+    }
+
+    @Override
+    public ResultVo removeFunds(List<FundInfoVo> fundInfoVos) {
+        ResultVo resultVo = new ResultVo();
+        int i=iFundInfoDao.removeFunds(fundInfoVos);
+        if (i>0) {
+            resultVo.setResCode("0");
+        }
+        return resultVo;
     }
 }

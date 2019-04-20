@@ -1,6 +1,7 @@
 package com.txk.springcloudstart.serverfeign.service;
 
 import com.txk.springcloudstart.serverfeign.vo.FundInfoVo;
+import com.txk.springcloudstart.serverfeign.vo.ResultVo;
 
 import java.util.List;
 
@@ -11,4 +12,7 @@ import java.util.List;
 public interface FundService {
     //根据条件查询FundInfo
     List<FundInfoVo> queryFundInfo(FundInfoVo FundInfoVo);
+
+    //删除
+    ResultVo removeFunds(List<FundInfoVo> fundInfoVos);
 }

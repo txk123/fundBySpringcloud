@@ -14,4 +14,6 @@ import java.util.List;
 @Repository
 public interface IFundInfoDao {
     List<FundInfoVo> queryFundInfo(FundInfoVo FundInfoVo);
+
+    int removeFunds(List<FundInfoVo> fundInfoVos);
 }

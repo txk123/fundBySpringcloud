@@ -3,6 +3,7 @@ package com.txk.springcloudstart.serverfeign.controller;
 import com.txk.springcloudstart.serverfeign.service.FundService;
 import com.txk.springcloudstart.serverfeign.service.InitOptionsService;
 import com.txk.springcloudstart.serverfeign.vo.FundInfoVo;
+import com.txk.springcloudstart.serverfeign.vo.ResultVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -31,13 +32,17 @@ public class FundInfoController {
         return fundService.queryFundInfo(fundInfoVo);
     }
 
-
-
     @RequestMapping(value = "api/initSelectInfo")
     @ResponseBody
     public Map<String, String[]> initSelectInfo() {
         Map<String, String[]> stringMap =  initOptionsService.initOptions();
 
         return stringMap;
+    }
+
+    @RequestMapping(value = "api/removeFunds")
+    @ResponseBody
+    public ResultVo removeFunds(@RequestBody List<FundInfoVo> fundInfoVos) {
+        return fundService.removeFunds(fundInfoVos);
     }
 }
