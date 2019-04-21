@@ -45,4 +45,17 @@ public class FundInfoController {
     public ResultVo removeFunds(@RequestBody List<FundInfoVo> fundInfoVos) {
         return fundService.removeFunds(fundInfoVos);
     }
+    @RequestMapping(value = "api/saveFundInfo")
+    @ResponseBody
+    public ResultVo  saveFundInfo(@RequestBody FundInfoVo fundInfoVo) {
+        return fundService.saveFundInfo(fundInfoVo);
+    }
+
+
+    @RequestMapping(value = "api/editFundInfo")
+    @ResponseBody
+    public ResultVo  editFundInfo(@RequestBody FundInfoVo fundInfoVo) {
+        return fundService.editFundInfo(fundInfoVo);
+    }
+
 }

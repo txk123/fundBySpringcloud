@@ -42,4 +42,24 @@ public class FundServiceImpl implements FundService {
         }
         return resultVo;
     }
+
+    @Override
+    public ResultVo saveFundInfo(FundInfoVo fundInfoVo) {
+        ResultVo resultVo = new ResultVo();
+        int i=iFundInfoDao.saveFundInfo(fundInfoVo);
+        if (i>0) {
+            resultVo.setResCode("0");
+        }
+        return resultVo;
+    }
+
+    @Override
+    public ResultVo editFundInfo(FundInfoVo fundInfoVo) {
+        ResultVo resultVo = new ResultVo();
+        int i=iFundInfoDao.editFundInfo(fundInfoVo);
+        if (i>0) {
+            resultVo.setResCode("0");
+        }
+        return resultVo;
+    }
 }

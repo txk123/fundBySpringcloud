@@ -16,4 +16,8 @@ public interface IFundInfoDao {
     List<FundInfoVo> queryFundInfo(FundInfoVo FundInfoVo);
 
     int removeFunds(List<FundInfoVo> fundInfoVos);
+
+    int saveFundInfo(FundInfoVo fundInfoVo);
+
+    int editFundInfo(FundInfoVo fundInfoVo);
 }

@@ -28,6 +28,53 @@
         <result property="lastUpdateUser" column="last_update_user"/>
         <result property="lastUpdateTm" column="last_update_tm"/>
     </resultMap>
+
+    <insert id="saveFundInfo" parameterType="com.txk.springcloudstart.serverfeign.vo.FundInfoVo">
+        insert into PARM_FUND_INFO
+        (id, fund_code, fund_name, fund_full_name, begin_date, end_date, custodian_code, ta_code, is_grade, status, fund_type, is_open, fund_category, settle_participant_no, ss_holder_code, sz_holder_code, remark)
+        values
+        (SEQ_PARM_FUND_INFO.nextval,
+        #{fundCode},
+        #{fundName},
+        #{fundFullName},
+        #{beginDate},
+        #{endDate},
+        #{custodianCode},
+        #{taCode},
+        #{isGrade},
+        #{status},
+        #{fundType},
+        #{isOpen},
+        #{fundCategory},
+        #{settleParticipantNo},
+        #{ssHolderCode},
+        #{szHolderCode},
+        #{remark})
+
+    </insert>
+    <update id="editFundInfo" parameterType="com.txk.springcloudstart.serverfeign.vo.FundInfoVo">
+        update PARM_FUND_INFO
+        <set>
+            <if test="fundCode != null">FUND_CODE=#{fundCode,jdbcType=VARCHAR},</if>
+            <if test="fundName != null">fund_name=#{fundName,jdbcType=VARCHAR},</if>
+            <if test="fundFullName != null">fund_full_name=#{fundFullName,jdbcType=VARCHAR},</if>
+           <!-- <if test="beginDate != null">begin_date=#{beginDate},</if>
+            <if test="endDate != null">end_date=#{endDate},</if>-->
+            <if test="custodianCode != null">custodian_code=#{custodianCode,jdbcType=VARCHAR},</if>
+            <if test="taCode != null">ta_code=#{taCode,jdbcType=VARCHAR},</if>
+            <if test="isGrade != null">is_grade=#{isGrade,jdbcType=VARCHAR},</if>
+            <if test="status != null">status=#{status,jdbcType=VARCHAR},</if>
+            <if test="fundType != null">fund_type=#{fundType,jdbcType=VARCHAR},</if>
+            <if test="isOpen != null">is_open=#{isOpen,jdbcType=VARCHAR},</if>
+            <if test="fundCategory != null">fund_category=#{fundCategory,jdbcType=VARCHAR},</if>
+            <if test="settleParticipantNo != null">settle_participant_no=#{settleParticipantNo,jdbcType=VARCHAR},</if>
+            <if test="ssHolderCode != null">ss_holder_code=#{ssHolderCode,jdbcType=VARCHAR},</if>
+            <if test="szHolderCode != null">sz_holder_code=#{szHolderCode,jdbcType=VARCHAR},</if>
+            <if test="remark != null">remark=#{remark,jdbcType=VARCHAR},</if>
+        </set>
+        where id=#{id,jdbcType=VARCHAR}
+    </update>
+
     <delete id="removeFunds" >
         DELETE FROM PARM_FUND_INFO t WHERE t.id IN
         <foreach collection="list" item="item" open="("
