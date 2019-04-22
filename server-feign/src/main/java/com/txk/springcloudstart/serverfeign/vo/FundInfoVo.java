@@ -1,16 +1,14 @@
 package com.txk.springcloudstart.serverfeign.vo;
 
 
-import java.util.Date;
-
 public class FundInfoVo {
 
   private String id;
   private String fundCode;
   private String fundName;
   private String fundFullName;
-  private Date beginDate;
-  private Date endDate;
+  private String beginDate;
+  private String endDate;
   private String custodianCode;
   private String taCode;
   private String isGrade;
@@ -23,16 +21,56 @@ public class FundInfoVo {
   private String szHolderCode;
   private String needReview;
   private String reviewer;
-  private Date reviewTime;
+  private String reviewTime;
   private String remark;
   private String createUser;
-  private Date createTm;
+  private String createTm;
   private String lastUpdateUser;
-  private Date lastUpdateTm;
+  private String lastUpdateTm;
 
   private long totalRecords;
   private int pageSize;
   private int pageNum;
+
+  public String getBeginDate() {
+    return beginDate;
+  }
+
+  public void setBeginDate(String beginDate) {
+    this.beginDate = beginDate;
+  }
+
+  public String getEndDate() {
+    return endDate;
+  }
+
+  public void setEndDate(String endDate) {
+    this.endDate = endDate;
+  }
+
+  public String getReviewTime() {
+    return reviewTime;
+  }
+
+  public void setReviewTime(String reviewTime) {
+    this.reviewTime = reviewTime;
+  }
+
+  public String getCreateTm() {
+    return createTm;
+  }
+
+  public void setCreateTm(String createTm) {
+    this.createTm = createTm;
+  }
+
+  public String getLastUpdateTm() {
+    return lastUpdateTm;
+  }
+
+  public void setLastUpdateTm(String lastUpdateTm) {
+    this.lastUpdateTm = lastUpdateTm;
+  }
 
   public long getTotalRecords() {
     return totalRecords;
@@ -88,22 +126,6 @@ public class FundInfoVo {
 
   public void setFundFullName(String fundFullName) {
     this.fundFullName = fundFullName;
-  }
-
-  public Date getBeginDate() {
-    return beginDate;
-  }
-
-  public void setBeginDate(Date beginDate) {
-    this.beginDate = beginDate;
-  }
-
-  public Date getEndDate() {
-    return endDate;
-  }
-
-  public void setEndDate(Date endDate) {
-    this.endDate = endDate;
   }
 
   public String getCustodianCode() {
@@ -202,14 +224,6 @@ public class FundInfoVo {
     this.reviewer = reviewer;
   }
 
-  public Date getReviewTime() {
-    return reviewTime;
-  }
-
-  public void setReviewTime(Date reviewTime) {
-    this.reviewTime = reviewTime;
-  }
-
   public String getRemark() {
     return remark;
   }
@@ -226,14 +240,6 @@ public class FundInfoVo {
     this.createUser = createUser;
   }
 
-  public Date getCreateTm() {
-    return createTm;
-  }
-
-  public void setCreateTm(Date createTm) {
-    this.createTm = createTm;
-  }
-
   public String getLastUpdateUser() {
     return lastUpdateUser;
   }
@@ -242,11 +248,4 @@ public class FundInfoVo {
     this.lastUpdateUser = lastUpdateUser;
   }
 
-  public Date getLastUpdateTm() {
-    return lastUpdateTm;
-  }
-
-  public void setLastUpdateTm(Date lastUpdateTm) {
-    this.lastUpdateTm = lastUpdateTm;
-  }
 }

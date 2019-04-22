@@ -33,23 +33,23 @@
         insert into PARM_FUND_INFO
         (id, fund_code, fund_name, fund_full_name, begin_date, end_date, custodian_code, ta_code, is_grade, status, fund_type, is_open, fund_category, settle_participant_no, ss_holder_code, sz_holder_code, remark)
         values
-        (SEQ_PARM_FUND_INFO.nextval,
-        #{fundCode},
-        #{fundName},
-        #{fundFullName},
-        #{beginDate},
-        #{endDate},
-        #{custodianCode},
-        #{taCode},
-        #{isGrade},
-        #{status},
-        #{fundType},
-        #{isOpen},
-        #{fundCategory},
-        #{settleParticipantNo},
-        #{ssHolderCode},
-        #{szHolderCode},
-        #{remark})
+        (PARM_FUND_INFO_ID_SEQ.nextval,
+        #{fundCode,jdbcType=VARCHAR},
+        #{fundName,jdbcType=VARCHAR},
+        #{fundFullName,jdbcType=VARCHAR},
+        to_date(#{beginDate,jdbcType=VARCHAR},'yyyy/mm/dd'),
+        to_date(#{endDate,jdbcType=VARCHAR},'yyyy/mm/dd'),
+        #{custodianCode,jdbcType=VARCHAR},
+        #{taCode,jdbcType=VARCHAR},
+        #{isGrade,jdbcType=VARCHAR},
+        #{status,jdbcType=VARCHAR},
+        #{fundType,jdbcType=VARCHAR},
+        #{isOpen,jdbcType=VARCHAR},
+        #{fundCategory,jdbcType=VARCHAR},
+        #{settleParticipantNo,jdbcType=VARCHAR},
+        #{ssHolderCode,jdbcType=VARCHAR},
+        #{szHolderCode,jdbcType=VARCHAR},
+        #{remark,jdbcType=VARCHAR})
 
     </insert>
     <update id="editFundInfo" parameterType="com.txk.springcloudstart.serverfeign.vo.FundInfoVo">
@@ -58,8 +58,8 @@
             <if test="fundCode != null">FUND_CODE=#{fundCode,jdbcType=VARCHAR},</if>
             <if test="fundName != null">fund_name=#{fundName,jdbcType=VARCHAR},</if>
             <if test="fundFullName != null">fund_full_name=#{fundFullName,jdbcType=VARCHAR},</if>
-           <!-- <if test="beginDate != null">begin_date=#{beginDate},</if>
-            <if test="endDate != null">end_date=#{endDate},</if>-->
+            <if test="beginDate != null">begin_date= to_date(#{beginDate},'yyyy/mm/dd'),</if>
+            <if test="endDate != null">end_date=to_date(#{endDate},'yyyy/mm/dd'),</if>
             <if test="custodianCode != null">custodian_code=#{custodianCode,jdbcType=VARCHAR},</if>
             <if test="taCode != null">ta_code=#{taCode,jdbcType=VARCHAR},</if>
             <if test="isGrade != null">is_grade=#{isGrade,jdbcType=VARCHAR},</if>

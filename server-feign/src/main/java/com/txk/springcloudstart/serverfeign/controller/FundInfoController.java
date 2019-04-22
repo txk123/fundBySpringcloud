@@ -55,6 +55,7 @@ public class FundInfoController {
     @RequestMapping(value = "api/editFundInfo")
     @ResponseBody
     public ResultVo  editFundInfo(@RequestBody FundInfoVo fundInfoVo) {
+
         return fundService.editFundInfo(fundInfoVo);
     }
 
